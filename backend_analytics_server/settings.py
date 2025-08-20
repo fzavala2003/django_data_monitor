@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -123,6 +124,8 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / 'static',  # Asegúrate de que esté usando Pathlib
 ]
+STATIC_ROOT = BASE_DIR / 'assets'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -133,10 +136,12 @@ API_URL = 'http://danielz.pythonanywhere.com/landing/api/index/?format=json'
 CSRF_TRUSTED_ORIGINS = [
   "https://*.app.github.dev", # Solo si utiliza Codespaces
   "https://localhost:8000",
-  "http://127.0.0.1:8000"
+  "http://127.0.0.1:8000",
+  "https://*.up.railway.app",
 ]
 ALLOWED_HOSTS = [
   "*",
+  '.up.railway.app'
 ]
 
 # Fallo: acceso sin autenticación
@@ -144,3 +149,5 @@ LOGIN_URL = '/login/'
 
 # Éxito: luego de autenticación exitosa
 LOGIN_REDIRECT_URL = '/'
+
+DEBUG = False

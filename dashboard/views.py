@@ -2,11 +2,16 @@ from django.shortcuts import render
 import requests
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
+from django.http import JsonResponse
 
 """
 def home(request):
     return render(request, 'dashboard/base.html')
 """
+def proxy_api(request):
+    url = settings.API_URL
+    response = requests.get(url)
+    return JsonResponse(response.json(), safe=False)
 @login_required
 @permission_required('dashboard.index_viewer', raise_exception=True)
 def index(request):

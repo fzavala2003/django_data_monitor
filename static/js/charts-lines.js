@@ -4,7 +4,7 @@
 
 async function fetchData() {
   try {
-    const response = await fetch('http://danielz.pythonanywhere.com/landing/api/index/?format=json');
+    const response = await fetch('/proxy/api/');
     const jsonData = await response.json();
     console.log(jsonData);
 
