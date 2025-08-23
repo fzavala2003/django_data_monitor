@@ -133,7 +133,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Asegúrate de que esté usando Pathlib
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
