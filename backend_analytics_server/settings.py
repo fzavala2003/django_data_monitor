@@ -133,7 +133,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Asegúrate de que esté usando Pathlib
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
+STATIC_ROOT = BASE_DIR / 'assets'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
@@ -148,10 +148,7 @@ CSRF_TRUSTED_ORIGINS = [
   "http://127.0.0.1:8000",
   "https://*.up.railway.app",
 ]
-ALLOWED_HOSTS = [
-  "*",
-  '.up.railway.app'
-]
+ALLOWED_HOSTS = ['.up.railway.app']
 
 # Fallo: acceso sin autenticación
 LOGIN_URL = '/login/'
